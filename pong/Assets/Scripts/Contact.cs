@@ -6,9 +6,23 @@ public class Contact : MonoBehaviour {
 
 	public Rigidbody sphere;
 	public float shotForce = 1000f;
-	public float moveSpeed = 10f; 
+	public float moveSpeed = 10f;
+	private GameManager gameManager;
 	
 	int scoreValue = 1;
+
+	void Start ()
+	{
+		GameObject gameManagerObject = GameObject.FindWithTag ("GameManager");
+		if (gameManagerObject != null)
+		{
+			gameManager = gameManagerObject.GetComponent <GameManager>();
+		}
+		if (gameManager == null)
+		{
+			Debug.Log ("Cannot find 'GameManager' script");
+		}
+	}
 
 	void OnCollisionEnter(Collision col){
 		if (col.gameObject.tag == "Bat"){
@@ -18,7 +32,20 @@ public class Contact : MonoBehaviour {
 		}
 	}
 
-	void shoot()
+	void OnTriggerEnter(Collider other) 
+	{
+		if (other.tag == "Sphere")
+		{
+			gameManager.GameOver ();
+			//Destroy(other.gameObject);
+		}
+	}
+
+}
+		
+		
+
+/*	void shoot()
 	{
 		//print("rightThumbNode -- " + rightThumbNode.GetOrientationWorld().ToString());
 		//Vector3 thumbVec = new Vector3(0f, 0f, 0f);// = rightThumbNode.GetPositionLocal();
@@ -36,7 +63,7 @@ public class Contact : MonoBehaviour {
 
 		}
 	}
-}
+}*/
 
 
 
