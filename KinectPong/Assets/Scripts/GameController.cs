@@ -39,11 +39,16 @@ public class GameController : MonoBehaviour
 		if (gameOver)
 		{
 			restartText.text = "Press 'R' to Restart";
+			//restartText.text = "Restarting";
+
 			restart = true;
 		}
 
 		if (restart)
 		{
+			/*yield return new WaitForSeconds(5);
+			 * Application.LoadLevel (Application.loadedLevel);*/
+
 			if (Input.GetKeyDown (KeyCode.R))
 			{
 				Application.LoadLevel (Application.loadedLevel);
