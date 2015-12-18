@@ -32,13 +32,13 @@ public class Contact : MonoBehaviour {
 		{
 			gameController.GameOver ();
 			//Destroy(col.gameObject);
-			Debug.Log ("Hit Lose Collider");
+			//Debug.Log ("Hit Lose Collider");
 		}
 
 		if (col.gameObject.tag == "Win")
 		{
 			gameController.GameWin ();
-			Debug.Log ("Hit Win Collider");
+			//Debug.Log ("Hit Win Collider");
 
 		}
 	}

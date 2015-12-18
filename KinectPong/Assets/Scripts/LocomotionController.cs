@@ -21,26 +21,38 @@ public class LocomotionController : MonoBehaviour {
 		headNode = MiddleVR.VRDisplayMgr.GetNode("Kinect0.User0.Head");
 		cameraNode = MiddleVR.VRDisplayMgr.GetNode("Camera0");
 		rightHandNode = MiddleVR.VRDisplayMgr.GetNode("Kinect0.User0.Right_Hand_Node");
-		rightHandTracker = MiddleVR.VRDeviceMgr.GetTracker("Kinect0.User0.Right_Hand");
+		//rightHandTracker = MiddleVR.VRDeviceMgr.GetTracker("Kinect0.User0.Right_Hand");
 		projectile = GameObject.FindWithTag("Projectile");
 		
 	}
 	
 	void FixedUpdate() {
 		
-		if (rightHandTracker.IsTracked())
-		{
-			tracked = true;
-			projectile.SetActive(true);
-			//Instantiate(projectile, transform.position, transform.rotation) as Rigidbody;
-		}
+		//if (rightHandTracker.IsTracked())
+		//{
+			//tracked = true;
+            //projectile.SetActive(true);
+           // Rigidbody rb = Instantiate(projectile, transform.position, transform.rotation) as Rigidbody;
+           // Debug.Log("Hand Tracking Active");
+		//}
 		
 		// cameraNode.SetOrientationWorld(headNode.GetOrientationWorld());
 		float xPos = MiddleVRTools.ToUnity(rightHandNode.GetPositionLocal()).x * -15;
 		float yPos = MiddleVRTools.ToUnity(rightHandNode.GetPositionLocal()).y * 5;
 		float zPos = MiddleVRTools.ToUnity(rightHandNode.GetPositionLocal()).z * -2;
 		shield.transform.localPosition = new Vector3(xPos, yPos, zPos);
-		
-		//shield.transform.localRotation = MiddleVRTools.ToUnity(headNode.GetOrientationLocal());
-	}
+
+        float xPosCam = MiddleVRTools.ToUnity(cameraNode.GetPositionLocal()).x;
+        float yPosCam = MiddleVRTools.ToUnity(cameraNode.GetPositionLocal()).y;
+        float zPosCam = MiddleVRTools.ToUnity(cameraNode.GetPositionLocal()).z;
+
+        Debug.Log("camera:" + Camera.main.transform.position);
+      
+
+        
+
+
+
+        //shield.transform.localRotation = MiddleVRTools.ToUnity(headNode.GetOrientationLocal());
+    }
 }

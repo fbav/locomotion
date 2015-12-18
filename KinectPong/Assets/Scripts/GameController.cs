@@ -23,11 +23,11 @@ public class GameController : MonoBehaviour
 	
 		restartText = GameObject.Find("RestartText").GetComponent<Text>();
 		gameOverText = GameObject.Find("GameOverText").GetComponent<Text>();
-		gameWinText = GameObject.Find("GameWinText").GetComponent<Text>();
+		//gameWinText = GameObject.Find("GameWinText").GetComponent<Text>();
 
 		restartText.text = "";
 		gameOverText.text = "";
-		gameWinText.text = "";
+		//gameWinText.text = "";
 	}
 	
 	void Update ()
